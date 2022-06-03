@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Watch TV</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap" rel="stylesheet">s
+    </head>
+    <body>
+        <img id="tb" class="borders" src="TV.png"><!-- TV sprite -->
+        <div class="ln"> <!-- Background images -->
+            <img src="background.png">
+            <img src="background.png">
+            <img src="background.png">
+            <img src="background.png">
+        </div>
+        <div id="number">a</div><!-- Hidden number to check API (For dev) -->
+        <button id="butt" hidden>Hidden</button> <!-- Hidden button for auto pressing -->
+        <!-- TV Controls -->
+        <button id="next" class="right" onclick="cle();"></button>
+        <button id="next" onclick="toggleFullScreen();" class="pop"></button>
+        <button id="next" onclick="cle();"></button>
+        <div id="ae" class="bubble"></div><!-- Container for text -->
+        <div id="numbe"> <!-- Sprites -->
+            <div class="stuff">
+                <img id="talk" class="overlay" src="act.gif">
+                <img id="stare" src="idle.gif">
+            </div>
+        </div>
+        <!-- Audios -->
+        <audio id="bgm" loop>
+            <source src="mp2-ltgb.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="pap" loop>
+            <source src="pap.mp3" type="audio/mpeg">
+        </audio>
+        <script>
+            const tele = document.getElementsByClassName("borders");
+            tele.width = window.innerWidth;
+            tele.height = window.innerHeight;
+
+            window.addEventListener('resize', () => { // Fit television to window screen
+                tele.width = window.innerWidth
+                tele.height = window.innerHeight
+            })
+
+            var elem = document.getElementById("tb");
+            var mus = document.getElementById("bgm");
+            var eee = document.getElementById("pap");
+            eee.muted = true;
+
+            var count = 0;
+            function toggleFullScreen() { // Fullscreen API
+                count++; 
+
+                if ((document.fullScreenElement && document.fullScreenElement !== null) || // alternative standard method  
+                (!document.mozFullScreen && !document.webkitIsFullScreen)) { // current working methods  
+                    if (document.documentElement.requestFullScreen) {
+                        document.documentElement.requestFullScreen();
+                    } else if (document.documentElement.mozRequestFullScreen) {
+                        document.documentElement.mozRequestFullScreen();
+                    } else if (document.documentElement.webkitRequestFullScreen) {
+                        document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                    }
+                } else {
+                    if (document.cancelFullScreen) {
+                        document.cancelFullScreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.webkitCancelFullScreen) {
+                        document.webkitCancelFullScreen();
+                    }
+                }
+
+                if (count % 2 == 0){ // Turns TV off
+                    elem.style.backgroundColor = 'black';
+                    mus.pause();
+                    eee.muted = true;
+                }
+                else { // Turns TV on
+                    elem.style.backgroundColor = 'rgba(0,0,0,0)';
+                    mus.play();
+                    eee.muted = false;
+                }
+            }
+            elem.style.backgroundColor = 'black';
+        </script>
+        <script type="text/javascript" src="api.js"></script>
+    </body>
+</html>

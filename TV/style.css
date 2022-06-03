@@ -1,0 +1,117 @@
+body{
+    background-color: brown;
+    margin: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+}
+
+.borders{
+    z-index: 1;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}
+
+.ln{
+    display: flex;
+    top: 25%;
+    width:100%;
+    position: absolute;
+    z-index: -1;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+
+.ln img{
+    height: 100%;
+}
+
+#ae{
+    margin: 40px 70px 0px 70px;
+    width: auto;
+    height: auto;
+    background-color: white;
+    border-radius: 25px;
+    /* box-shadow: 5px 10px #888888; */
+}
+
+.bubble {
+    position: relative;
+    width: 250px;
+    height: 120px;
+    padding: 0px;
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 2px 12px 3px #888888;
+}
+
+.bubble:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 15px 0;
+    transform:             rotate( 360deg );
+        -moz-transform:    rotate( 360deg );
+        -ms-transform:     rotate( 360deg );
+        -o-transform:      rotate( 360deg );
+        -webkit-transform: rotate( 360deg );
+    border-color: #FFFFFF transparent;
+    display: block;
+    width: 0;
+    bottom: -15px;
+    left: 49%;
+}
+
+.stuff{
+    margin-top: 35px;
+    position: absolute;
+    text-align: center;
+}
+
+.stuff .overlay{
+    position: absolute;
+    visibility: hidden;
+}
+
+.stuff img{
+    z-index: -1;
+    width: 500px;
+    height: 500px;
+}
+
+#numbe{
+    bottom: 75vh;
+    left: 32%;
+    position: absolute;
+}
+
+p{
+    margin: 0;
+    display: block;
+    padding: 20px 20px 20px 20px;
+}
+
+button{
+    position: absolute;
+    z-index: 2;
+    bottom: 10px;
+    left: 41vw;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0);
+    border: 0;
+}
+
+.pop{
+    left: 48vw;
+}
+.right{
+    left: 55vw;
+}
